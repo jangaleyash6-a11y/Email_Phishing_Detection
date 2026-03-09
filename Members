@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Currency Converter</title>
+</head>
+
+<body>
+
+<h2>Currency Converter</h2>
+
+<form action="convert" method="post">
+
+Amount (INR):
+<input type="text" name="amount"><br><br>
+
+<select name="type">
+<option value="usd">INR to USD</option>
+<option value="eur">INR to EUR</option>
+<option value="gbp">INR to GBP</option>
+</select>
+
+<br><br>
+
+<input type="submit" value="Convert">
+
+</form>
+
+</body>
+</html>
+####Currency converter.jsp
+
+package com.currency;
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class ConverterServlet extends HttpServlet {
+
+protected void doPost(HttpServletRequest req, HttpServletResponse res)
+throws ServletException, IOException {
+
+double amount = Double.parseDouble(req.getParameter("amount"));
+String type = req.getParameter("type");
+
+double result = 0;
+
+if(type.equals("usd"))
+result = amount * 0.012;
+
+else if(type.equals("eur"))
+result = amount * 0.011;
+
+else if(type.equals("gbp"))
+result = amount * 0.0095;
+
+PrintWriter out = res.getWriter();
+out.println("<h2>Converted Amount = " + result + "</h2>");
+
+}
+}#servlet .java
+
+
+<html>
+<head>
+<title>Simple Interest Calculator</title>
+</head>
+
+<body>
+
+<h2>Simple Interest Calculator</h2>
+
+<form action="interest" method="post">
+
+Principal Amount:
+<input type="text" name="p"><br><br>
+
+Rate of Interest:
+<input type="text" name="r"><br><br>
+
+Time:
+<input type="text" name="t"><br><br>
+
+<input type="submit" value="Calculate">
+
+</form>
+
+</body>
+</html>
+
+####Simple interest calculator.jsp
+
+package com.interest;
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class InterestServlet extends HttpServlet {
+
+protected void doPost(HttpServletRequest req, HttpServletResponse res)
+throws ServletException, IOException {
+
+double p = Double.parseDouble(req.getParameter("p"));
+double r = Double.parseDouble(req.getParameter("r"));
+double t = Double.parseDouble(req.getParameter("t"));
+
+double si = (p * r * t) / 100;
+
+PrintWriter out = res.getWriter();
+out.println("<h2>Simple Interest = " + si + "</h2>");
+
+}
+}
+
+Intrestservlet.java
