@@ -1,0 +1,106 @@
+simple project
+mvn archetype:generate
+maven-archetype-quickstart
+3
+
+groupId: com.college
+artifactId: MavenDemo
+version: 1.0-SNAPSHOT
+package: com.college
+ Y: Y
+
+cd MavenDemo
+
+mvn compile
+
+mvn package
+
+java -cp target/MavenDemo-1.0-SNAPSHOT.jar com.college.App
+
+#Simple localhost web app
+mvn archetype:generate
+
+maven-archetype-webapp
+
+3
+
+groupId: org.mywebapp.com
+artifactId: MyWebApp
+version: 1.0-SNAPSHOT
+package: com.college
+ Y: Y
+
+cd MyWebApp
+
+mvn compile
+
+mvn package
+
+go to your project folder -> MyWebApp -> target -> copy  WAR file
+
+go to tomcat -> apache tomcat -> webapps -> paste here 
+
+go to tomcat -> apache tomcat -> bin -> open cmd
+
+enter startup.bat
+(to  stop server : shutdown.bat)
+
+server willl start 
+
+go to browser -> search localhost:8080/MyWebApp/
+Hello World
+
+##plugins
+
+in main 
+java 
+
+Create a maven project first like practical 9
+
+Locate to MyWebApp -> src -> main -> create folders -> java -> org -> mywebapp -> com -> inside here we need to save MyClass.java file
+
+open notepad and type this code
+
+package org.mywebapp.com;
+
+import java.util.*;
+
+public class MyClass {
+ public static void main(String[] args) {
+  List<String> list = new ArrayList<>();
+  list.add("Hello");
+  list.add("World");
+  System.out.println(list);
+ }
+}
+
+save
+
+Locate MyWebApp -> pom file -> open with notepad -> inside plugins section paste this
+
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+            <source>8</source>
+            <target>8</target>
+        </configuration>
+    </plugin>
+
+    <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.53.v20231009</version>
+    </plugin>
+
+save
+
+Locate to MyWebApp -> open cmd
+
+Enter mvn compile
+
+Enter mvn jetty:run
+
+Open http://localhost:8080
+Hello World !
