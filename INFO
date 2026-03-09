@@ -1,0 +1,58 @@
+# Create a new branch
+
+git branch test
+
+# Switch branches
+
+git checkout test
+
+# Create and switch shorthand
+
+git checkout -b test
+
+# Commit changes in branch
+
+git commit -a -m "Updated index.htm"
+
+# Switch back to master
+
+git checkout master
+
+# Create hotfix branch
+
+git checkout -b hotfix
+
+git commit -a -m "Updated index.htm from hotfix"
+
+# Merge branches
+
+git merge hotfix
+
+git merge test
+
+# List branches
+
+git branch
+
+# Delete branch
+
+git branch -d hotfix
+# Check last commit per branch
+
+git branch -v
+
+# Show merged and unmerged branches
+
+git branch --merged
+
+git branch --no-merged
+
+# Push branch to remote
+
+git push origin <branch>
+
+# Rebase feature branch
+
+git checkout feature
+
+git rebase main
